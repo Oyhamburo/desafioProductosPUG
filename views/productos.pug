@@ -1,0 +1,41 @@
+html
+    head
+        meta(charset='UTF-8')
+        meta(http-equiv='X-UA-Compatible' content='IE=edge')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        title Productos
+        // CDN DE FLOWBITE
+        link(rel='stylesheet' href='https://unpkg.com/flowbite@1.5.1/dist/flowbite.min.css')
+        script(src='https://cdn.tailwindcss.com')
+        link(rel='icon' href='http://drive.google.com/uc?export=view&id=1e9ghZwtWgswSg6HKwmHB8be6hDN5y1sb')
+
+    body.py-8.px-4.mx-auto.max-w-screen-md(class='lg:py-16')
+        h1.mb-4.text-4xl.font-extrabold.tracking-tight.leading-none.text-gray-900(class='md:text-5xl lg:text-6xl dark:text-black')
+            | Lista de 
+            mark.px-2.text-white.bg-blue-600.rounded(class='dark:bg-blue-500') Productos
+        br
+        .overflow-x-auto.relative
+            if productos.length>0
+                table.w-full.text-sm.text-left.text-gray-500(class='dark:text-gray-400')
+                    thead.text-xs.text-gray-700.uppercase.bg-gray-50(class='dark:bg-gray-700 dark:text-gray-400')
+                        tr 
+                            th.py-3.px-6(scope='col')='Nombre'
+                            th.py-3.px-6(scope='col')='Precio'
+                            th.py-3.px-6(scope='col')='Imagen'
+                    tbody
+                        for p in productos
+                            tr.bg-white.border-b(class='dark:bg-gray-800 dark:border-gray-700')
+                                td.py-4.px-6=p.title
+                                td.py-4.px-6=p.price
+                                td.py-4.px-6
+                                    img.max-w-xs.h-auto(style='max-width: 100px;', src=p.img, alt=p.img)
+            else
+                h1.mb-4.text-4xl.font-extrabold.tracking-tight.leading-none.text-gray-900(class='md:text-5xl lg:text-6xl dark:text-black')
+                | No hay
+                mark.px-2.text-white.bg-blue-600.rounded(class='dark:bg-blue-500') Productos 
+        br
+        a.text-white.bg-gray-800.font-medium.rounded-lg.text-sm.px-5.mr-2.mb-2(href='/' type='button' class='hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 py-2.5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700')
+            | Cargar
+            | Productos
+    script(src='./tailwind.config.js')
+    script(src='https://unpkg.com/flowbite@1.5.1/dist/flowbite.js')
